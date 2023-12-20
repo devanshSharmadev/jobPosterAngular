@@ -1,0 +1,27 @@
+<div class="loading-indicator" *ngIf="isLoading">Loading...</div>
+<div *ngIf="!isLoading">
+  <div *ngFor="let job of jobPostingDisplay" class="card">
+    <h3>
+      <a *ngIf="job.url" [href]="job.url" target="_blank">{{ job.title }}</a>
+      <span *ngIf="!job.url">{{ job.title }}</span>
+    </h3>
+    <p class="text">
+      By {{ job.by }} | {{ job.time * 1000 | date : "medium" }}
+    </p>
+  </div>
+  <button
+    class="btn"
+    *ngIf="currentIndex < jobPostings.length"
+    (click)="loadMore()"
+  >
+    Load more jobs
+  </button>
+  <h2
+    *ngIf="currentIndex >= jobPostings.length && currentIndex != 0"
+    class="loading-indicator"
+    style="margin-bottom: 16px;"
+  >
+    All posts loaded
+</h2>
+</div>
+

@@ -1,0 +1,9 @@
+<div *ngIf="job">
+    <h3>
+      <a *ngIf="job.url" [href]="job.url" target="_blank">{{ job.title }}</a>
+      <span *ngIf="!job.url">{{ job.title }}</span>
+    </h3>
+    <p>{{ job.by }} | {{ job.time | date: 'medium' }}</p>
+    <p>{{ job.text }}</p>
+  </div>
+  
